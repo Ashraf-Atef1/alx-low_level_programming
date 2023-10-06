@@ -11,7 +11,7 @@ int main(void)
 {
 	char letter;
 
-	for(letter = 'a'; letter < 123; letter++)
+	for (letter = 'a'; letter < 123; letter++)
 	{
 	putchar(letter);
 	}
