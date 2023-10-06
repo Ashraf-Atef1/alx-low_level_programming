@@ -3,16 +3,17 @@
 #include <stdio.h>
 
 /**
- * main - print out if the number greater than or less than or equal 0
+ * main - print out if the last number greater than or less than 6 or equal 0
  * Return: print out 0 if there is no error
  * Ashraf Atef
  */
 int main(void)
 {
 	int n;
+	int lastDigit;
 	srand(time(0));
 	n = rand() - RAND_MAX / 2;
-	int lastDigit = n % 10;
+	lastDigit = n % 10;
 	if (n == 0)
 	{
 	printf("Last digit of %d is %d and is 0\n", n, lastDigit);
