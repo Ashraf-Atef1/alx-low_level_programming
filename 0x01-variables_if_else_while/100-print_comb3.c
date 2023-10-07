@@ -1,7 +1,8 @@
 #include <stdio.h>
 
 /**
- * main - print all compination numbers from 0 to 9 sparated by "," then start a new line
+ * main - print all compination numbers from 0 to 9 sparated by ","
+ * then start a new line
  * Return: print out 0 if there is no error
  * Ashraf Atef
  */
