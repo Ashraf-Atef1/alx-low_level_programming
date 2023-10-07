@@ -13,12 +13,14 @@ int main(void)
 	for (num = 48; num < 58; num++)
 	{
 		for(num2 = num + 1; num2 < 58; num2++ )
-		putchar(num);
-		putchar(num2);
-		if (num != '8' && num2 != '9')
 		{
-			putchar(',');
-			putchar(' ');
+			putchar(num);
+			putchar(num2);
+			if (num != '8' && num2 != '9')
+			{
+				putchar(',');
+				putchar(' ');
+			}
 		}
 	}
 	putchar('\n');
