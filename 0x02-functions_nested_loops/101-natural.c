@@ -2,6 +2,7 @@
 /**
  * main - prints all natural number below 1024 that accept
  * divided by 3 and 5
+ * Return: 0
  * Ashraf Atef
  */
 
@@ -17,5 +18,5 @@ int main()
 		if (i % 3 == 0 || i % 5 == 0)
 			sum += i;
 	printf("%d\n", sum);
-	return 0;
+	return (0);
 }
