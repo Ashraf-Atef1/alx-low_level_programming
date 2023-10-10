@@ -2,31 +2,33 @@
 #include "main.h"
 /**
  * print_times_table - prints the input times table, starting with 0
- * @num: the number
+ * @n: the number
  * Ashraf Atef
  */
 
-void print_times_table(int num)
+void print_times_table(int n)
 {
 	int i;
 	int j;
-	int n;
-	if (num > 15 || num < 0)
+	int p;
+
+	if (n > 15 || n < 0)
 		return;
-	for (i = 1; i <= num; i++)
+
+	for (i = 0; i <= n; i++)
 	{
-		for (j = 0; j <= num; j++)
+		for (j = 0; j <= n; j++)
 		{
-			n = i * j;
+			p = i * j;
 			if (j == 0)
 			{
-				printf("%d", n);
+				printf("%d", p);
 			}
 			else
 			{
-				printf(", %d", n);
+				printf(", %d", p);
 			}
 		}
-		_putchar('\n');
+		printf("\n");
 	}
 }
