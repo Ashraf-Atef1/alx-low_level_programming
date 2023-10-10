@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * print_alphabet - print out all litters a-z and create a new line 10 times
+ * print_alphabet_x10 - print out all litters a-z and create a new line 10 times
  * Return: 0
  * Ashraf Atef
  */
