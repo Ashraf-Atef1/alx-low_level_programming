@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "main.h"
 /**
  * main - print out '_putchar'
  * Return: 0
@@ -7,6 +7,12 @@
 
 int main(void)
 {
-	printf("_putchar\n");
+	int i;
+	char textout[] = "_putchar";
+	for (i = 0; i < sizeof(textout) / sizeof(textout[0]); i++)
+	{
+		_putchar(textout[i]);
+	}
+	_putchar('\n');
 	return (0);
 }
