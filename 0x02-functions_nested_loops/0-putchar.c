@@ -12,7 +12,7 @@ int main(void)
 	char textout[] = "_putchar";
 
 	size = sizeof(textout) / sizeof(textout[0]);
-	for (i = 0; i < size; i++)
+	for (i = 0; i < size - 1; i++)
 	{
 		_putchar(textout[i]);
 	}
