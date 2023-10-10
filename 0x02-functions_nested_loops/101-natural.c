@@ -6,7 +6,7 @@
  * Ashraf Atef
  */
 
-int main()
+int main(void)
 {
 	int i;
 	int max;
