@@ -8,10 +8,10 @@
 
 int main(void)
 {
-	unsigned long long first;
-	unsigned long long second;
-	unsigned long long next;
-	unsigned long long sum;
+	unsigned long first;
+	unsigned long second;
+	unsigned long next;
+	unsigned long sum;
 
 	first = 1;
 	second = 2;
