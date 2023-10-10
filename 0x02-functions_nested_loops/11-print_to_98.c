@@ -2,6 +2,7 @@
 #include "main.h"
 /**
  * print_to_98 - print all numbers to 98
+ * @n: the number
  * Ashraf Atef
  */
 
