@@ -21,7 +21,7 @@ int main(void)
 	for (i = 3; i <= n; i++)
 	{
 		next = first + second;
-		printf(", %ld", next);
+		printf(", %lu", next);
 		first = second;
 		second = next;
 	}
