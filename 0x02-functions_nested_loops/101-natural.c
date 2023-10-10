@@ -11,8 +11,9 @@ int main()
 	int max;
 	int sum;
 
+	max = 1024;
 	sum = 0;
-	for (i = 1; i <= 1024; i++)
+	for (i = 1; i <= max; i++)
 		if (i % 3 == 0 || i % 5 == 0)
 			sum += i;
 	printf("%d\n", sum);
