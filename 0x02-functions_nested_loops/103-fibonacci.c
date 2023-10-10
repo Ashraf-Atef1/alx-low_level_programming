@@ -31,7 +31,7 @@ int main(void)
 		second = next;
 	}
 
-	printf("%llu\n", sum);
+	printf("%lu\n", sum);
 
 	return (0);
 }
