@@ -9,7 +9,7 @@ int main(void)
 {
 	int i;
 	char textout[] = "_putchar";
-	for (i = 0; i < sizeof(textout) / sizeof(textout[0]); i++)
+	for (i = 0; i < (int)sizeof(textout) / sizeof(textout[0]); i++)
 	{
 		_putchar(textout[i]);
 	}
