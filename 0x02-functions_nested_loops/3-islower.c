@@ -1,8 +1,8 @@
 #include "main.h"
 /**
- * print_alphabet_x10 - print out all litters a-z
+ * _islower - check if the char is lowercase or not
  * and create a new line 10 times
- * Return: 0
+ * Return: 1 if char is lower case and 0 if not
  * Ashraf Atef
  */
 
