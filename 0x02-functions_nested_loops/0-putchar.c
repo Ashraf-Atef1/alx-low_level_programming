@@ -8,8 +8,11 @@
 int main(void)
 {
 	int i;
+	int size;
 	char textout[] = "_putchar";
-	for (i = 0; i < (int)sizeof(textout) / sizeof(textout[0]); i++)
+
+	size = sizeof(textout) / sizeof(textout[0]);
+	for (i = 0; i < size; i++)
 	{
 		_putchar(textout[i]);
 	}
