@@ -20,6 +20,7 @@ void jack_bauer(void)
 			}
 			else
 			{
+				_putchar('0');
 				_putchar(h + '0');
 			}
 			_putchar(':');
@@ -30,8 +31,10 @@ void jack_bauer(void)
 			}
 			else
 			{
+				_putchar('0');
 				_putchar(m + '0');
 			}
+			_putchar('\n');
 		}
 	}
 }
