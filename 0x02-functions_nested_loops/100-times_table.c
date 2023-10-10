@@ -22,11 +22,11 @@ void print_times_table(int n)
 			p = i * j;
 			if (j == 0)
 			{
-				printf("%4d", p);
+				printf("%3d", p);
 			}
 			else
 			{
-				printf(", %4d", p);
+				printf(", %3d", p);
 			}
 		}
 		printf("\n");
