@@ -15,7 +15,6 @@ int main(void)
 
 	first = 1;
 	second = 2;
-	next;
 	sum = 2;
 	while (1)
 	{
