@@ -35,13 +35,25 @@ int main(void)
 	b1 = b / 100000000000;
 	a2 = a % 100000000000;
 	b2 = b % 100000000000;
-	for (; i <= n; i++)
+	for (; i <= n - 2; i++)
 	{
 		next1 = a1 + b1;
 		next2 = a2 + b2;
 		if (next1 % 10 == 0)
 			next1 /= 10;
 		printf(", %lu%lu", next1, next2);
+		a1 = b1;
+		a2 = b2;
+		b1 = next1;
+		b2 = next2;
+	}
+	for (; i <= n; i++)
+	{
+		next1 = a1 + b1;
+		next2 = a2 + b2;
+		if (next1 % 10 == 0)
+			next1 /= 10;
+		printf(", %lu%lu%lu", next1 / 10, next1 % 10 + next2 / 100000000000, next2 % 100000000000);
 		a1 = b1;
 		a2 = b2;
 		b1 = next1;
