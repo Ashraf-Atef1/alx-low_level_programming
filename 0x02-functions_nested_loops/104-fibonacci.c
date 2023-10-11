@@ -1,33 +1,54 @@
 #include <stdio.h>
+/**
+ * main - prints the first 98 Fibonacci numbers
+ * starting with 1 and 2
+ * Return: 0
+ * Ashraf Atef
+ */
 
 int main(void)
 {
-	int n = 98; // Change this to the number of Fibonacci numbers you want to print
-	unsigned long first = 1;
-	unsigned long second = 2;
+	unsigned long a;
+	unsigned long b;
 	unsigned long next;
+	unsigned int n;
+	unsigned int i;
+	unsigned long a1;
+	unsigned long b1;
+	unsigned long a2;
+	unsigned long b2;
+	unsigned long next1;
+	unsigned long next2;
 
-	printf("%lu, %lu", first, second);
-
-	for (int i = 3; i <= n; i++)
+	n = 98;
+	a = 1;
+	b = 2;
+	printf("%ld, %ld", a, b);
+	for (i = 3; i <= n - 6; i++)
 	{
-		next = first + second;
-		if (next >= first)
-		{
-			printf(", %lu", next);
-		}
-		else
-		{
-			unsigned long upper = (next >> 32);
-			unsigned long lower = (next & 0xFFFFFFFF);
-			printf(", %lu%08lu", upper, lower);
-		}
-
-		first = second;
-		second = next;
+		next = a + b;
+		printf(", %lu", next);
+		a = b;
+		b = next;
+	}
+	a1 = a / 100000000000000000;
+	b1 = b / 100000000000000000;
+	a2 = a % 100000000000000000;
+	b2 = b % 100000000000000000;
+	for (; i <= n; i++)
+	{
+		next1 = a1 + b1;
+		next2 = a2 + b2;
+		if (next1 % 10 == 0)
+			next1 /= 10;
+		printf(", %lu%lu", next1, next2);
+		a1 = b1;
+		a2 = b2;
+		b1 = next1;
+		b2 = next2;
 	}
 
 	printf("\n");
 
-	return 0;
+	return (0);
 }
