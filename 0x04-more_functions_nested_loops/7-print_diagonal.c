@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * print_line - print '_' n times
- * @n: number of '_' to print
+ * print_diagonal - print diognal line
+ * @n: n is the number of times the character \ should be printed
  * Ashraf Atef
  */
-void print_line(int n)
+void print_diagonal(int n)
 {
 	int i;
 	int j;
