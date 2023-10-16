@@ -14,10 +14,8 @@ int main(void)
 	srand(time(NULL));
 	while (i < sum)
 	{
-		char c = (rand()) % 95 + 33;
+		char c = (rand()) % 93 + 34;
 
-		if (i + c > sum)
-			continue;
 		if (i + 126 > sum)
 			c = sum - i;
 		printf("%c", c);
