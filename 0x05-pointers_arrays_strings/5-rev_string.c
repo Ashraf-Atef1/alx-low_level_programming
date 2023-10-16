@@ -9,14 +9,8 @@ void rev_string(char *s)
 {
 	int i = 0;
 	int j = 0;
+	char str[500];
 
-	while (s[i] != '\0')
-	{
-		i++;
-	}
-	char *str = (char *)maloc(i * sizeof(char));
-
-	i = 0;
 	while (s[i] != '\0')
 	{
 		str[i] = s[i];
