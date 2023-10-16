@@ -14,9 +14,9 @@ void rev_string(char *s)
 	{
 		i++;
 	}
+	char *str = (char *)maloc(i * sizeof(char));
 
-	char str[i];
-
+	i = 0;
 	while (s[i] != '\0')
 	{
 		str[i] = s[i];
