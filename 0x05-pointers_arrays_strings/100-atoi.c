@@ -17,6 +17,8 @@ int _atoi(char *s)
 			sign++;
 		if (s[i] >= '0' && s[i] <= '9')
 			num = num * 10 + s[i] - '0';
+		if (!(s[i] >= '0' && s[i] <= '9') && num)
+			break;
 		i++;
 	}
 	if (sign % 2)
