@@ -20,10 +20,9 @@ unsigned int _strspn(char *s, char *accept)
 			if (accept[j] == s[i])
 			{
 				sum++;
-				break;
 			}
 		}
-		if (i >= sum)
+		if (s[i] == ' ' || s[i] == ',')
 			break;
 	}
 
