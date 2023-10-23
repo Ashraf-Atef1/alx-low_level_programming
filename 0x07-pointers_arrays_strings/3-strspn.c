@@ -9,22 +9,26 @@
 
 unsigned int _strspn(char *s, char *accept)
 {
-	unsigned int sum;
-	unsigned int i;
-	int j;
+	unsigned int count = 0;
+	int found;
+	int i;
 
-	for (i = 0; s[i]; i++)
+	while (*s)
 	{
-		for (j = 0; accept[j]; j++)
+		found = 0;
+		for (i = 0; accept[i]; i++)
 		{
-			if (accept[j] == s[i])
+			if (*s == accept[i])
 			{
-				sum++;
+				count++;
+				found = 1;
+				break;
 			}
 		}
-		if (s[i] == ' ' || s[i] == ',')
+		if (!found)
 			break;
+		s++;
 	}
 
-	return (sum);
+	return (count);
 }
