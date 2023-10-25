@@ -1,31 +1,36 @@
 #include "main.h"
 
-int _get_sqrt(int i, int n);
+int is_prime(int i, int n);
 
 /**
- * _sqrt_recursion - return sqroot of n
+ * is_prime_number - return 1 if number is prime and 0 if not
  * @n: the number
- * Return: return the sqroot of n
+ * Return: return 1 if number is prime and 0 if not
  * Ashraf Atef
  */
 
-int _sqrt_recursion(int n)
+int is_prime_number(int n)
 {
-	return (_get_sqrt(0, n));
+	if (n < 0)
+		n = -n;
+	if (n == 1)
+		return (0);
+	return (is_prime(2, n));
 }
 
 /**
- * _get_sqrt - return sqroot of n
+ * is_prime - return 1 if number is prime and 0 if not
  * @i: the result
  * @n: the number
- * Return: return the sqroot of n
+ * Return: return 1 if number is prime and 0 if not
  * Ashraf Atef
  */
-int _get_sqrt(int i, int n)
+int is_prime(int i, int n)
 {
-	if (i)
-		return (_get_sqrt(i + 1, n));
-	if (i * i > n)
-		return (-1);
-	return (i);
+	if (i < n && n % i != 0)
+		return (is_prime(i + 1, n));
+	else if (i < n && n % i == 0)
+		return (0);
+	else
+		return (1);
 }
