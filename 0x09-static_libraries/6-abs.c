@@ -1,11 +1,9 @@
 #include "main.h"
 /**
- * _abs - return absolute number of the input
- * @n: the number
- * Return: the absolute number of the input
- * Ashraf Atef
+ * _abs - compute the absolute value of an integer
+ * @n: int type number
+ * Return: absolute value of @n
  */
-
 int _abs(int n)
 {
 	if (n < 0)

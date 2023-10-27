@@ -1,27 +1,34 @@
 #include "main.h"
+
 /**
- * _atoi - return a number from a string
- * @s: the string to extract number from
- * Return: the number;
- * Ashraf Atef
+ * _atoi - converts a string to an integer.
+ * @s: input string.
+ * Return: integer.
  */
 int _atoi(char *s)
 {
-	int i = 0;
-	int sign = 0;
-	unsigned int num = 0;
+	unsigned int count = 0, size = 0, oi = 0, pn = 1, m = 1, i;
 
-	while (s[i] != '\0')
+	while (*(s + count) != '\0')
 	{
-		if (s[i] == '-')
-			sign++;
-		if (s[i] >= '0' && s[i] <= '9')
-			num = num * 10 + s[i] - '0';
-		if (!(s[i] >= '0' && s[i] <= '9') && num)
+		if (size > 0 && (*(s + count) < '0' || *(s + count) > '9'))
 			break;
-		i++;
+		if (*(s + count) == '-')
+			pn *= -1;
+
+		if ((*(s + count) >= '0') && (*(s + count) <= '9'))
+		{
+			if (size > 0)
+				m *= 10;
+			size++;
+		}
+		count++;
 	}
-	if (sign % 2)
-		return (-num);
-	return (num);
+
+	for (i = count - size; i < count; i++)
+	{
+		oi = oi + ((*(s + i) - 48) * m);
+		m /= 10;
+	}
+	return (oi * pn);
 }

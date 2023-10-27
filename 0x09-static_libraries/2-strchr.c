@@ -1,23 +1,18 @@
 #include "main.h"
 /**
- * _strchr - point to first adress of the c int the string s
- * @s: pointer for the string
- * @c: pointer for the buffer
- * Return: a pointer for dest
- * Ashraf Atef
+ * _strchr - locates a character in a string,
+ * @s: string.
+ * @c: character.
+ * Return: the pointer to the first occurrence of the character c.
  */
-
 char *_strchr(char *s, char c)
 {
-	while (*s)
-	{
-		if (*s == c)
-			return (s);
-		s++;
-	}
+	unsigned int i = 0;
 
-	if (*s == c)
-		return (s);
-
+	for (; *(s + i) != '\0'; i++)
+		if (*(s + i) == c)
+			return (s + i);
+	if (*(s + i) == c)
+		return (s + i);
 	return ('\0');
 }

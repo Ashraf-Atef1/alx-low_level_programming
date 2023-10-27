@@ -1,20 +1,15 @@
 #include "main.h"
 /**
- * _isalpha - check if the char is alphabit or not
- * @c: the character
- * and create a new line 10 times
- * Return: 1 if char is lower case and 0 if not
- * Ashraf Atef
+ * _isalpha - Check if character is a alphabet character.
+ * @c: type int character
+ * Return: 1 if letter, lowercase or uppercase, and 0 otherwise
  */
 
 int _isalpha(int c)
 {
-	if ((c >= 97 && c <= 122) || (c >= 65 && c <= 90))
-	{
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
 		return (1);
-	}
+
 	else
-	{
 		return (0);
-	}
 }
