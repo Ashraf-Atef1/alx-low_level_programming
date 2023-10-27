@@ -11,7 +11,7 @@
 
 int main(int argc, char const *argv[])
 {
-	int i, num = atoi(argv[1]), sum = 0, coins[] = {25, 10, 5, 2, 1};
+	int i, num = 0, sum = 0, coins[] = {25, 10, 5, 2, 1};
 
 	if (argc != 2)
 	{
@@ -23,17 +23,16 @@ int main(int argc, char const *argv[])
 		printf("0\n");
 		return (0);
 	}
+	num = atoi(argv[1]);
 	while (num)
 	{
 		for (i = 0; coins[i]; i++)
-		{
 			if (num - coins[i] >= 0)
 			{
 				num -= coins[i];
+				sum++;
 				break;
 			}
-		}
-		sum++;
 	}
 	printf("%d\n", sum);
 	return (0);
