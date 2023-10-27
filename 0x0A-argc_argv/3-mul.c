@@ -14,6 +14,12 @@ int main(int argc, char const *argv[])
 	int num1 = 0;
 	int num2 = 0;
 
+	if (argc != 3)
+	{
+		printf("Error\n");
+		return (1);
+	}
+
 	for (i = 0; argv[1][i]; i++)
 		if (argv[1][i] == '-')
 			continue;
@@ -30,9 +36,6 @@ int main(int argc, char const *argv[])
 	if (argv[2][0] == '-')
 		num2 = -num2;
 
-	if (argc != 3)
-		printf("Error\n");
-	else
-		printf("%d\n", num1 * num2);
+	printf("%d\n", num1 * num2);
 	return (0);
 }
