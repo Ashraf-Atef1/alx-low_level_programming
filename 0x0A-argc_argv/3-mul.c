@@ -15,10 +15,20 @@ int main(int argc, char const *argv[])
 	int num2 = 0;
 
 	for (i = 0; argv[1][i]; i++)
-		num1 = num1 * 10 + argv[1][i] - '0';
+		if (argv[1][i] == '-')
+			continue;
+		else
+			num1 = num1 * 10 + argv[1][i] - '0';
+	if (argv[1][0] == '-')
+		num1 = -num1;
 
 	for (i = 0; argv[2][i]; i++)
-		num2 = num2 * 10 + argv[2][i] - '0';
+		if (argv[2][i] == '-')
+			continue;
+		else
+			num2 = num2 * 10 + argv[2][i] - '0';
+	if (argv[2][0] == '-')
+		num2 = -num2;
 
 	if (argc != 3)
 		printf("Error\n");
