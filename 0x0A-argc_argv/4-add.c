@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * main - print the multiplication result of two number
+ * main - print the addtion of the numbers
  * @argc: the number of arguments
  * @argv: the array of arguments
  * Return: return 0 if programe exit in a right way
