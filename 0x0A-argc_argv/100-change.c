@@ -1,5 +1,6 @@
 #include <stdio.h>
-
+#include <stdlib.h>
+#include <string.h>
 /**
  * main - print prints the minimum number of coins
  * @argc: the number of arguments
@@ -10,7 +11,6 @@
 
 int main(int argc, char const *argv[])
 {
-	int i;
 	int num = 0;
 	int sum = 0;
 
@@ -25,10 +25,8 @@ int main(int argc, char const *argv[])
 		return (0);
 	}
 
-	for (i = 0; i < argv[1][i]; i++)
-	{
-		num = num * 10 + argv[1][i] - '0';
-	}
+	num = atoi(argv[1]);
+
 	while (num)
 	{
 		if (num - 25 >= 0)
