@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * main - print the multiplication result of two number
+ * main - print prints the minimum number of coins
  * @argc: the number of arguments
  * @argv: the array of arguments
  * Return: return 0 if programe exit in a right way
