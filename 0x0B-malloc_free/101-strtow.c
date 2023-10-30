@@ -42,7 +42,7 @@ char **split_string(char *str, int word_count)
 	}
 	words[word_count] = NULL;
 
-	return words;
+	return (words);
 }
 
 /**
