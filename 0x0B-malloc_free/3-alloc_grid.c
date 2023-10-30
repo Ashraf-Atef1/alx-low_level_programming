@@ -1,10 +1,10 @@
 #include <stdlib.h>
 #include "main.h"
 /**
- * alloc_grid - Concate the two strings in a new allocation space
- * @s1: The first string
- * @s2: The second string
- * Return: The new allocation space in memory
+ * alloc_grid - create 2D array
+ * @width: The width of the array
+ * @height: The height of the array
+ * Return: The 2D array location
  * Ashraf Atef
  */
 
@@ -16,7 +16,7 @@ int **alloc_grid(int width, int height)
 
 	if (width <= 0 || height <= 0)
 		return (NULL);
-	p = malloc(sizeof(int) * height);
+	p = malloc(sizeof(int) * height * width);
 	if (!p)
 		return (NULL);
 	for (i = 0; i < height; i++)
