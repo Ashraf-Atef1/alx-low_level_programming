@@ -15,11 +15,13 @@ char *argstostr(int ac, char **av)
 	int j = 0;
 	char *str;
 
+	if (!ac || !av)
+		return (NULL);
 	for (i = 0; i < ac; i++)
 		for (j = 0; av[i][j]; j++)
 			size++;
 
-	str = (char *)malloc(size + ac);
+	str = (char *)malloc(size + ac + 1);
 	if (!str)
 		return (NULL);
 	size = 0;
