@@ -11,9 +11,7 @@
  */
 char **split_string(char *str, int word_count)
 {
-	int x = 0;
-	int word_length = 0;
-	int i, k = 0;
+	int x = 0, word_length = 0, i, k = 0;
 
 	char **words = (char **)malloc((word_count + 1) * sizeof(char *));
 
@@ -55,10 +53,8 @@ char **split_string(char *str, int word_count)
  */
 char **strtow(char *str)
 {
-	int i = 0, word_count = 0;
+	int i = 0, word_count = 0, j = 0, word_index = 0;
 	char **words;
-	int j = 0;
-	int word_index = 0;
 
 	if (str == NULL || str[0] == '\0')
 		return (NULL);
@@ -72,19 +68,14 @@ char **strtow(char *str)
 				i++;
 		}
 		else
-		{
 			i++;
-		}
 	}
 
 	if (word_count == 0)
 		return (NULL);
-
 	words = split_string(str, word_count);
-
 	if (words == NULL)
 		return (NULL);
-
 	word_index = 0;
 	for (i = 0; i < word_count; i++)
 	{
@@ -99,6 +90,5 @@ char **strtow(char *str)
 		}
 		words[i][j] = '\0';
 	}
-
 	return (words);
 }
