@@ -1,84 +1,104 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include "main.h"
 
-char **declelation(char *str);
 /**
- * strtow - create array of words from a string
- * @str: the strings
- * Return: a pointer for allocated array of string's words
- * Ashraf Atef
+ * split_string - Splits a string into words.
+ * @str: The input string.
+ * @word_count: The number of words.
+ *
+ * Return: A pointer to an array of strings.
  */
-
-char **strtow(char *str)
+char **split_string(char *str, int word_count)
 {
-	int i = 0, j = 0, H = 0;
-	char **words = declelation(str);
+	int x = 0;
+	int word_length = 0;
+	int i, k = 0;
 
-	if (!words)
+	char **words = (char **)malloc((word_count + 1) * sizeof(char *));
+
+	if (words == NULL)
 		return (NULL);
-	for (i = 0, j = 0, H = 0; str[i]; i++)
-	{
-		if (str[i] == ' ' && (str[i + 1] == ' ' || str[i + 1] == '\0'))
-			continue;
-		if (str[i] == ' ' && j)
-		{
-			words[H][j] = '\0';
-			H++;
-			j = 0;
-		}
-		if (str[i] != ' ')
-		{
-			words[H][j] = str[i];
-			j++;
-		}
-	}
-	words[H][j] = '\0';
-	return (words);
-}
 
-/**
- * declelation - allocate spcese of words array
- * @str: the strings
- * Return: a pointer for allocated array of string's words
- * Ashraf Atef
- */
-char **declelation(char *str)
-{
-	int i = 0, j = 0, H = 0, W = 0;
-	char **words;
-
-	if (!str)
-		return (NULL);
-	for (i = 0; str[i]; i++)
+	for (i = 0; i < word_count; i++)
 	{
-		if (str[i] == ' ' && str[i + 1] == ' ')
-			continue;
-		if (str[i] == ' ' && j)
+		while (str[k] == ' ')
+			k++;
+		word_length = 0;
+		while (str[k] != ' ' && str[k] != '\0')
 		{
-			H++;
-			if (j > W)
-				W = j;
-			j = 0;
+			word_length++;
+			k++;
 		}
-		if (str[i] != ' ')
-			j++;
-	}
-	if (j)
-		H++;
-	words = (char **)malloc(H + 1);
-	if (!words)
-		return (0);
-	for (i = 0; i < H; i++)
-	{
-		words[i] = (char *)malloc(W + 1);
-		if (!words[i])
+		words[i] = (char *)malloc((word_length + 1) * sizeof(char));
+		if (words[i] == NULL)
 		{
-			for (i = 0; i < H; i++)
-				free(words[i]);
+
+			for (x = 0; x < i; x++)
+			{
+				free(words[x]);
+			}
 			free(words);
 			return (NULL);
 		}
 	}
-	words[H] = NULL;
+	words[word_count] = NULL;
+
+	return words;
+}
+
+/**
+ * strtow - Create an array of words from a string.
+ * @str: The input string.
+ *
+ * Return: A pointer to an array of strings.
+ */
+char **strtow(char *str)
+{
+	int i = 0, word_count = 0;
+	char **words;
+	int j = 0;
+	int word_index = 0;
+
+	if (str == NULL || str[0] == '\0')
+		return (NULL);
+
+	while (str[i] != '\0')
+	{
+		if (str[i] != ' ')
+		{
+			word_count++;
+			while (str[i] != ' ' && str[i] != '\0')
+				i++;
+		}
+		else
+		{
+			i++;
+		}
+	}
+
+	if (word_count == 0)
+		return (NULL);
+
+	words = split_string(str, word_count);
+
+	if (words == NULL)
+		return (NULL);
+
+	word_index = 0;
+	for (i = 0; i < word_count; i++)
+	{
+		j = 0;
+		while (str[word_index] == ' ')
+			word_index++;
+		while (str[word_index] != ' ' && str[word_index] != '\0')
+		{
+			words[i][j] = str[word_index];
+			j++;
+			word_index++;
+		}
+		words[i][j] = '\0';
+	}
+
 	return (words);
 }
