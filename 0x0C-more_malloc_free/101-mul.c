@@ -30,40 +30,34 @@ void multiply_numbers(const char *num1, const char *num2)
 	int len1 = (int)strlen(num1);
 	int len2 = (int)strlen(num2);
 	int len_result = len1 + len2;
-	int *result = (int *)calloc(len_result, sizeof(int));
+	int i = 0;
+	int j = 0;
 	int leading_zeros = 0;
-	int i, j;
+	int *result = (int *)calloc(len_result, sizeof(int));
 
 	for (i = len1 - 1; i >= 0; i--)
 	{
 		for (j = len2 - 1; j >= 0; j--)
 		{
 			int product = (num1[i] - '0') * (num2[j] - '0');
-			int carry = product / 10;
-			int position1 = i + j;
-			int position2 = i + j + 1;
-			int sum = product + result[position2];
+			int sum = product + result[i + j + 1];
 
-			result[position1] += carry;
-			result[position2] = sum % 10;
+			result[i + j + 1] = sum % 10;
+			result[i + j] += sum / 10;
 		}
 	}
-	while (leading_zeros < len_result && result[leading_zeros] == 0)
+
+	while (leading_zeros < len_result - 1 && result[leading_zeros] == 0)
 	{
 		leading_zeros++;
 	}
-	if (leading_zeros == len_result)
+
+	for (i = leading_zeros; i < len_result; i++)
 	{
-		printf("0\n");
+		printf("%d", result[i]);
 	}
-	else
-	{
-		for (i = leading_zeros; i < len_result; i++)
-		{
-			printf("%d", result[i]);
-		}
-		printf("\n");
-	}
+	printf("\n");
+
 	free(result);
 }
 /**
