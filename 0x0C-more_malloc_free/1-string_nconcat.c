@@ -1,11 +1,11 @@
 #include <stdlib.h>
 #include "main.h"
 /**
- * string_nconcat - check if there enough space in memory to allocate
+ * string_nconcat - concate to string with each other in allocated memory size
  * @s1: first string
  * @s2: second string
  * @n: first number of chars of s2
- * Return: a void pointer
+ * Return: a string pointer
  * Ashraf Atef
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
