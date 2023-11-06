@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdlib.h>
 #include "dog.h"
 
 /**
@@ -18,14 +18,14 @@ dog_t *new_dog(char *name, float age, char *owner)
 	if (new_dog == NULL)
 		return (NULL);
 
-	name_copy = strdup(name);
+	name_copy = name;
 	if (name_copy == NULL)
 	{
 		free(new_dog);
 		return (NULL);
 	}
 
-	owner_copy = strdup(owner);
+	owner_copy = owner;
 	if (owner_copy == NULL)
 	{
 		free(new_dog);
