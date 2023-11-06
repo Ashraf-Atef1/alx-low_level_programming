@@ -10,18 +10,19 @@
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	dog_t d;
+	dog_t d1;
+	dog_t *d = &d1;
 
-	if (&d)
+	if (d)
 	{
 		if (*name)
-			d.name = name;
+			d->name = name;
 		if (age)
-			d.age = age;
+			d->age = age;
 		if (*owner)
-			d.owner = owner;
+			d->owner = owner;
 	}
 	else
 		return (0);
-	return (&d);
+	return (d);
 }
