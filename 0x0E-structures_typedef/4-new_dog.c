@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include "dog.h"
 
+int _strlen(char *s);
+void _strcpy(char *dest, char *src);
 /**
  * new_dog - initalize struct dog values
  * @name: dog's name
