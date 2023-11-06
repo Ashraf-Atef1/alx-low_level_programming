@@ -14,7 +14,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 	dog_t d1;
 	dog_t *d = &d1;
 
-	if (d)
+	if (d && *name && age && *owner)
 	{
 		if (*name)
 			d->name = name;
