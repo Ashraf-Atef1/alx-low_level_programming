@@ -8,6 +8,7 @@
  */
 void print_name(char *name, void (*f)(char *))
 {
-	name = 0;
+	if (!name)
+		name = "";
 	f(name);
 }
