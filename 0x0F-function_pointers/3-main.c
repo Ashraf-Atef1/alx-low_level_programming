@@ -10,7 +10,8 @@
  */
 int main(int argc, char const *argv[])
 {
-	if (argc != 4 || !atoi(argv[1]) || !atoi(argv[3]))
+	if (argc != 4 || (atoi(argv[1]) == 0 && argv[1][0] != '0') ||
+		(atoi(argv[3]) == 0 && argv[3][0] != '0'))
 	{
 		printf("Error\n");
 		exit(98);
@@ -20,7 +21,8 @@ int main(int argc, char const *argv[])
 		printf("Error\n");
 		exit(99);
 	}
-	if ((argv[2][0] != '/' || argv[2][0] != '%') && argv[3][0] == 0)
+	if ((argv[2][0] != '/' || argv[2][0] != '%') &&
+		(atoi(argv[3]) == 0 && argv[3][0] == '0'))
 	{
 		printf("Error\n");
 		exit(100);
