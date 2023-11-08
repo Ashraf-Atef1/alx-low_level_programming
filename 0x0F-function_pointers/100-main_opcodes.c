@@ -14,18 +14,17 @@ int main(int argc, char const *argv[])
 	int (*f)(int, const char **) = main;
 	char *p = (char *)f;
 
-	/*
-		*if (argc != 2)
-		{
-			printf("Error\n");
-			exit(1);
-		}
-		if (b_num < 0)
-		{
-			printf("Error\n");
-			exit(2);
-		}
-	*/
+	if (argc != 2)
+	{
+		printf("Error\n");
+		exit(1);
+	}
+	if (b_num < 0)
+	{
+		printf("Error\n");
+		exit(2);
+	}
+
 	for (i = 0; i < b_num; i++)
 	{
 
