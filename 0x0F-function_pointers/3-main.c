@@ -10,7 +10,7 @@
  */
 int main(int argc, char const *argv[])
 {
-	if (argc != 4)
+	if (argc != 4 || !atoi(argv[1]) || !atoi(argv[3]))
 	{
 		printf("Error\n");
 		exit(98);
