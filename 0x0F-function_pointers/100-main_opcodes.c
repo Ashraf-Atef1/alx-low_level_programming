@@ -31,7 +31,7 @@ int main(int argc, char const *argv[])
 	for (i = 0; i < b_num; i++)
 	{
 
-		printf("%x", p[i] & 0XFF);
+		printf("%.2hhx", p[i]);
 		if (i < b_num - 1)
 			putchar(' ');
 	}
