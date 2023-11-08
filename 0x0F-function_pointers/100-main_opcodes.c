@@ -26,11 +26,11 @@ int main(int argc, char const *argv[])
 	}
 	for (i = 0; i < b_num; i++)
 	{
-		printf("%x", p[i] & 0XFF);
+
 		if (i < b_num - 1)
-			putchar(' ');
+			printf("%x ", p[i] & 0XFF);
 		else
-			putchar('\n');
+			printf("%x\n", p[i] & 0XFF);
 	}
 
 	return (0);
