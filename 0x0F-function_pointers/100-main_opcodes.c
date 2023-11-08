@@ -9,7 +9,6 @@
  */
 int main(int argc, char const *argv[])
 {
-	int b_num = atoi(argv[1]);
 	int i = 0;
 	int (*f)(int, const char **) = main;
 	char *p = (char *)f;
@@ -17,12 +16,14 @@ int main(int argc, char const *argv[])
 	if (argc != 2)
 	{
 		printf("Error\n");
-		exit(1);
+		return (1);
 	}
+	int b_num = atoi(argv[1]);
+
 	if (b_num < 0)
 	{
 		printf("Error\n");
-		exit(2);
+		return (2);
 	}
 
 	for (i = 0; i < b_num; i++)
