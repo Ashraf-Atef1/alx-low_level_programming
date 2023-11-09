@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include "variadic_functions.h"
+
+char *check(char *s);
 /**
  * print_all - print all arguments follwed by a new line
  * @format: specifyers in a string
@@ -10,40 +12,45 @@ void print_all(const char *const format, ...)
 {
 	va_list args;
 	int i = 0;
-	char *sep = "";
 
 	va_start(args, format);
-	while (format[i])
+	while (format && format[i])
 	{
 		switch (format[i])
 		{
 		case 'c':
-			printf("%s%c", sep, va_arg(args, int));
+			printf("%c", va_arg(args, int));
 			break;
 		case 'i':
-			printf("%s%d", sep, va_arg(args, int));
-			break;
-		case 'f':
-			printf("%s%f", sep, va_arg(args, double));
+			printf("%d", va_arg(args, int));
 			break;
 		case 's':
-		{
-			char *str = va_arg(args, char *);
-
-			if (str == NULL)
-				str = "(nil)";
-			printf("%s%s", sep, str);
+			printf("%s", check(va_arg(args, char *)));
+			break;
+		case 'f':
+			printf("%f", va_arg(args, double));
 			break;
 		}
-		default:
-			i++;
-			continue;
-		}
 
-		sep = ", ";
+		if ((format[i + 1] != '\0') && (format[i] == 'c' || format[i] == 'i' ||
+										format[i] == 's' || format[i] == 'f'))
+			printf(", ");
+
 		i++;
 	}
 
-	printf("\n");
 	va_end(args);
+	printf("\n");
+}
+/**
+ * check - check the value null or not
+ * @s: the string to check
+ * Return: the string or (nil)
+ * Ashraf Atef
+ */
+char *check(char *s)
+{
+	if (s)
+		return (s);
+	return ("(nil)");
 }
