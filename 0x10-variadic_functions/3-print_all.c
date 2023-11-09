@@ -40,11 +40,7 @@ void print_all(const char *const format, ...)
 	}
 
 	va_end(args);
-	while (*format)
-	{
-		printf("\n");
-		break;
-	}
+	printf("\n");
 }
 /**
  * check - check the value null or not
