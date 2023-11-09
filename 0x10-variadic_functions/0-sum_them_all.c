@@ -3,7 +3,7 @@
 
 /**
  * sum_them_all - Print the sum of the arguments
- * @n: number of the arugments
+ * @n: number of the arguments
  * Return: the sum of numbers
  * Ashraf Atef
  */
