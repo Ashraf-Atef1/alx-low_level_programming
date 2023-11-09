@@ -32,15 +32,21 @@ void print_all(const char *const format, ...)
 			break;
 		}
 
-		if ((format[i + 1] != '\0') && (format[i] == 'c' || format[i] == 'i' ||
-										format[i] == 's' || format[i] == 'f'))
+		while ((format[i + 1] != '\0') && (format[i] == 'c' || format[i] == 'i' ||
+										   format[i] == 's' || format[i] == 'f'))
+		{
 			printf(", ");
+			break;
+		}
 
 		i++;
 	}
 
 	va_end(args);
-	printf("\n");
+	if (*format)
+	{
+		printf("hello\n");
+	}
 }
 /**
  * check - check the value null or not
