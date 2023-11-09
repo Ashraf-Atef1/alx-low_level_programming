@@ -52,6 +52,7 @@ char *check(char *s)
 {
 	if (s)
 		return (s);
-
+	if (s == NULL)
+		return (s);
 	return ("(nil)");
 }
