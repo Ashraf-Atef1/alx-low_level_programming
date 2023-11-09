@@ -32,20 +32,18 @@ void print_all(const char *const format, ...)
 			break;
 		}
 
-		while ((format[i + 1] != '\0') && (format[i] == 'c' || format[i] == 'i' ||
-										   format[i] == 's' || format[i] == 'f'))
-		{
+		if ((format[i + 1] != '\0') && (format[i] == 'c' || format[i] == 'i' ||
+										format[i] == 's' || format[i] == 'f'))
 			printf(", ");
-			break;
-		}
 
 		i++;
 	}
 
 	va_end(args);
-	if (*format)
+	while (*format)
 	{
-		printf("hello\n");
+		printf("\n");
+		break;
 	}
 }
 /**
