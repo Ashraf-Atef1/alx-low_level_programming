@@ -10,7 +10,8 @@
  */
 void print_strings(const char *separator, const unsigned int n, ...)
 {
-	int i, x;
+	int i;
+	char *x;
 	va_list array;
 
 	va_start(array, n);
