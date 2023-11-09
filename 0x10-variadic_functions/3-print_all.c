@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include "variadic_functions.h"
-
-#include <stdio.h>
-#include <stdarg.h>
-#include "variadic_functions.h"
-
+/**
+ * print_all - print all arguments follwed by a new line
+ * @format: specifyers in a string
+ * Ashraf Atef
+ */
 void print_all(const char *const format, ...)
 {
 	va_list args;
