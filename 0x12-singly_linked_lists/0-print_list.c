@@ -34,7 +34,11 @@ size_t print_list(const list_t *h)
 	}
 	return (n);
 }
-
+/**
+ * print_num - print number
+ * @n: number to print out
+ * Ashraf Atef
+ */
 void print_num(int n)
 {
 	char c_num = n % 10 + '0';
