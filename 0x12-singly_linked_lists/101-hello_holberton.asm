@@ -1,5 +1,5 @@
 section .data
-    hello db "Hello, Holberton", 10, 0  ; 10 is the ASCII code for newline
+    hello db "Hello, Holberton", 10  ; 10 is the ASCII code for newline
     format db "%s", 0
 
 section .text
@@ -26,6 +26,6 @@ section .text
         ; Set up syscall parameters
         mov rax, 1          ; syscall number for sys_write
         mov rdi, 1          ; file descriptor 1 (stdout)
-        mov rdx, 18         ; message length
+        mov rdx, 17         ; message length
         syscall
         ret
