@@ -17,11 +17,7 @@ size_t print_listint_safe(const listint_t *head)
 	{
 		for (i = 0; i <= n; i++)
 			if (node_list[i] == head)
-			{
-				for (i = 0; i < n; i++)
-					free((listint_t *)node_list[i]);
 				return (n);
-			}
 		node_list[n] = head;
 		printf("[%p] %d\n", (void *)head, head->n);
 		head = head->next;
