@@ -1,4 +1,6 @@
 #include "lists.h"
+
+int is_loop(listint_t *node, listint_t *list[]);
 /**
  * free_listint_safe - free the linked list safly
  * @h: pointer for a node in the linked list
@@ -8,34 +10,44 @@
 
 size_t free_listint_safe(listint_t **h)
 {
-	size_t n = 0;
-	listint_t *slow = (listint_t *)*h;
-	listint_t *fast = (listint_t *)*h;
+	listint_t *current, *next;
+	listint_t *node_list[1000];
+	size_t count = 0;
 
 	if (h == NULL || *h == NULL)
 		return (0);
 
-	while (fast && fast->next)
-	{
-		slow = slow->next;
-		fast = fast->next->next;
+	current = *h;
 
-		if (slow == fast)
+	while (current)
+	{
+		next = current->next;
+		current->next = NULL;
+		if (!is_loop(current, node_list))
 		{
-			free(slow->next);
-			slow->next = NULL;
-			n++;
-			break;
+			node_list[count++] = current;
 		}
+		free(current);
+		current = next;
 	}
+	*h = NULL;
+	return (count);
+}
+/**
+ * is_loop - check if there a linked list loop
+ * @node: current node
+ * @list: list of nodes
+ * Return: 1 if there a loop and 0 otherwise
+ * Ashraf Atef
+ */
+int is_loop(listint_t *node, listint_t *list[])
+{
+	int i = 0;
 
-	while (*h)
+	while (list[i++])
 	{
-		listint_t *temp = *h;
-		*h = (*h)->next;
-		free(temp);
-		n++;
+		if (list[i] == node)
+			return (1);
 	}
-
-	return (n);
+	return (0);
 }
