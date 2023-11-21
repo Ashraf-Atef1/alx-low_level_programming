@@ -1,10 +1,10 @@
 #include <unistd.h>
 #include "lists.h"
 /**
- * get_nodeint_at_index - free a node in a specific index
+ * get_nodeint_at_index - get a node in a specific index
  * @head: pointer for a node in the linked list
- * @index: index of node to be freed
- * Return: the freed node
+ * @index: index of node to get
+ * Return: the node
  * Ashraf Atef
  */
 
