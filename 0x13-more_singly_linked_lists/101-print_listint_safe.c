@@ -11,7 +11,7 @@ size_t print_listint_safe(const listint_t *head)
 {
 	size_t i;
 	size_t n = 0;
-	const listint_t *node_list[100];
+	const listint_t *node_list[1000];
 
 	while (head)
 	{
