@@ -10,44 +10,33 @@ int is_loop(listint_t *node, listint_t *list[]);
 
 size_t free_listint_safe(listint_t **h)
 {
-	listint_t *current, *next;
-	listint_t *node_list[1000];
-	size_t count = 0;
+	size_t nodes_freed = 0;
+	int address_diff;
+	listint_t *current_node;
 
-	if (h == NULL || *h == NULL)
+	if (!h || !*h)
 		return (0);
 
-	current = *h;
-
-	while (current)
+	while (*h)
 	{
-		next = current->next;
-		current->next = NULL;
-		if (!is_loop(current, node_list))
+		address_diff = *h - (*h)->next;
+
+		if (address_diff > 0)
 		{
-			node_list[count++] = current;
+			current_node = (*h)->next;
+			free(*h);
+			*h = current_node;
+			nodes_freed++;
 		}
-		free(current);
-		current = next;
+		else
+		{
+			free(*h);
+			*h = NULL;
+			nodes_freed++;
+			break;
+		}
 	}
-	*h = NULL;
-	return (count);
-}
-/**
- * is_loop - check if there a linked list loop
- * @node: current node
- * @list: list of nodes
- * Return: 1 if there a loop and 0 otherwise
- * Ashraf Atef
- */
-int is_loop(listint_t *node, listint_t *list[])
-{
-	int i = 0;
 
-	while (list[i++])
-	{
-		if (list[i] == node)
-			return (1);
-	}
-	return (0);
+	*h = NULL;
+	return (nodes_freed);
 }
