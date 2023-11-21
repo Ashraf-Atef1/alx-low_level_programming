@@ -20,5 +20,5 @@ size_t free_listint_safe(listint_t **h)
 		free(temp);
 		n++;
 	}
-	return (n);
+	return (n - 1);
 }
