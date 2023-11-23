@@ -9,16 +9,5 @@
 
 int get_bit(unsigned long int n, unsigned int index)
 {
-	unsigned int j = 1, sum = n;
-
-	while (index)
-	{
-		j = j << 1;
-		index--;
-	}
-	while (j)
-	{
-		return ((sum & j) ? 1 : 0);
-	}
-	return (-1);
+	return ((n & 1 << index) ? 1 : 0);
 }
