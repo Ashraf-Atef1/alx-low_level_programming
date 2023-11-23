@@ -1,8 +1,9 @@
 #include "main.h"
 /**
- * print_binary - convert decimal to binary and print it out
+ * get_bit - git the bit in a specific postion
  * @n: decimal number
- *
+ * @index: the index of the bit
+ * Return: bit value
  * Ashraf Atef
  */
 
@@ -10,11 +11,14 @@ int get_bit(unsigned long int n, unsigned int index)
 {
 	unsigned int j = 1, sum = n;
 
-	while (j * 2 <= n)
+	while (index)
+	{
 		j = j << 1;
+		index--;
+	}
 	while (j)
 	{
-		_putchar((sum & j) ? '1' : '0');
-		j = j >> 1;
+		return ((sum & j) ? 1 : 0);
 	}
+	return (-1);
 }
