@@ -9,8 +9,10 @@
 
 int get_bit(unsigned long int n, unsigned int index)
 {
-	unsigned int j = 1, sum = n;
+	unsigned long int j = 1;
 
+	if (index > sizeof(n) * 8 - 1)
+		return (-1);
 	while (index)
 	{
 		j = j << 1;
@@ -18,7 +20,7 @@ int get_bit(unsigned long int n, unsigned int index)
 	}
 	while (j)
 	{
-		return ((sum & j) ? 1 : 0);
+		return ((n & j) ? 1 : 0);
 	}
 	return (-1);
 }
