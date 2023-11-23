@@ -8,16 +8,13 @@
 
 void print_binary(unsigned long int n)
 {
-	unsigned int j = 0, sum = 0;
-	int i = 0;
+	unsigned int j = 1, sum = n;
 
-	while (b[i])
-		i++;
-	for (j = 1, i--; i >= 0; j *= 2, i--)
-		if (b[i] == '1')
-			sum += j;
-		else if (b[i] != '0')
-			return (0);
-
-	return (sum);
+	while (j * 2 <= n)
+		j = j << 1;
+	while (j)
+	{
+		printf("%c", (sum & j) ? '1' : '0');
+		j = j >> 1;
+	}
 }
