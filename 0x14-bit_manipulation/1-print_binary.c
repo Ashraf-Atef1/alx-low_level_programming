@@ -14,7 +14,7 @@ void print_binary(unsigned long int n)
 		j = j << 1;
 	while (j)
 	{
-		printf("%c", (sum & j) ? '1' : '0');
+		_putchar((sum & j) ? '1' : '0');
 		j = j >> 1;
 	}
 }
