@@ -8,13 +8,13 @@
 
 void print_binary(unsigned long int n)
 {
-	unsigned int j = 1, sum = n;
-
-	while (j << 1 <= n)
-		j = j << 1;
-	while (j)
+	if (n)
 	{
-		_putchar((sum & j) ? '1' : '0');
-		j = j >> 1;
+		print_binary(n >> 1);
+		_putchar((n & 1) + '0');
+	}
+	else
+	{
+		_putchar('0');
 	}
 }
