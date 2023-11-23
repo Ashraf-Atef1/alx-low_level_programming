@@ -6,11 +6,11 @@
  * Ashraf Atef
  */
 
-void print_binary(unsigned long int n)
+int get_bit(unsigned long int n, unsigned int index)
 {
 	unsigned int j = 1, sum = n;
 
-	while (j << 1 <= n)
+	while (j * 2 <= n)
 		j = j << 1;
 	while (j)
 	{
