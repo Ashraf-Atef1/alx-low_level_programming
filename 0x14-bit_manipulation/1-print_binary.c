@@ -1,18 +1,16 @@
 #include "main.h"
 /**
- * binary_to_uint - convert binary to decimal
- * @b: binary number
- * Return: decimal number
+ * print_binary - convert decimal to binary and print it out
+ * @n: decimal number
+ *
  * Ashraf Atef
  */
 
-unsigned int binary_to_uint(const char *b)
+void print_binary(unsigned long int n)
 {
 	unsigned int j = 0, sum = 0;
 	int i = 0;
 
-	if (!b)
-		return (NULL);
 	while (b[i])
 		i++;
 	for (j = 1, i--; i >= 0; j *= 2, i--)
