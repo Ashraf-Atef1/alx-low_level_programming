@@ -1,8 +1,6 @@
 #include "main.h"
 /**
  * get_endianness - get the number of bits to filps to get another number
- * @n: decimal number
- * @m: decimal number
  * Return: number of bits to flip
  * Ashraf Atef
  */
