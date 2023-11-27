@@ -6,71 +6,65 @@ void _error(const char *fileName, const char *error_txt);
 
 int main(int argc, char const *argv[])
 {
-	int fd1 = open(argv[1], O_RDONLY);
-	int fd2 = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC,
-				   S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
-
 	char buff[1024];
-	char *err;
+	ssize_t data_size;
+	int fd1, fd2;
+	const char *err;
 
 	if (argc != 3)
 	{
 		err = "Usage: cp file_from file_to\n";
-		write(2, err, strlen(err));
+		write(STDERR_FILENO, err, strlen(err));
 		exit(97);
 	}
-	if (fd2 == -1)
-	{
-		_error(argv[2], "Error: Can't write to ");
-		exit(99);
-	}
+
+	fd1 = open(argv[1], O_RDONLY);
 	if (fd1 == -1)
 	{
 		_error(argv[1], "Error: Can't read from file ");
 		exit(98);
 	}
-	while (1)
-	{
-		ssize_t data_size = read(fd1, buff, 1024);
 
-		if (data_size == -1)
+	fd2 = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
+	if (fd2 == -1)
+	{
+		_error(argv[2], "Error: Can't write to ");
+		close_check(fd1);
+		exit(99);
+	}
+
+	while ((data_size = read(fd1, buff, sizeof(buff))) > 0)
+	{
+		if (write(fd2, buff, data_size) != data_size)
 		{
-			_error(argv[1], "Error: Can't read from file ");
-			exit(98);
-		}
-		if (!data_size)
-		{
-			break;
-		}
-		else
-		{
-			buff[data_size] = '\0';
-			new_file((char *)argv[2], buff, fd2);
+			_error(argv[2], "Error: Can't write to ");
+			close_check(fd1);
+			close_check(fd2);
+			exit(99);
 		}
 	}
+
+	if (data_size == -1)
+	{
+		_error(argv[1], "Error: Can't read from file ");
+		close_check(fd1);
+		close_check(fd2);
+		exit(98);
+	}
+
 	close_check(fd1);
 	close_check(fd2);
+
 	return (0);
 }
+
 void close_check(int fd)
 {
-	int i = 1;
-	char c;
-
-	while (fd / i)
-		i *= 10;
 	if (close(fd) == -1)
 	{
-		char *err = "Error: Can't close fd ";
-
-		write(2, err, strlen(err));
-		while (i == 1)
-		{
-			i /= 10;
-			c = fd / i + '0';
-			write(2, &c, 1);
-		}
-		write(2, "\n", 1);
+		char buf[1024];
+		snprintf(buf, sizeof(buf), "Error: Can't close fd %d\n", fd);
+		write(STDERR_FILENO, buf, strlen(buf));
 		exit(100);
 	}
 }
