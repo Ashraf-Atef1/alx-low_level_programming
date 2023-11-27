@@ -29,8 +29,6 @@ int main(int argc, char const *argv[])
 		_error(argv[1], "Error: Can't read from file ");
 		exit(98);
 	}
-
-	buff[1023] = '\0';
 	while (1)
 	{
 		ssize_t data_size = read(fd1, buff, 1024);
