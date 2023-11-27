@@ -9,6 +9,12 @@
 char *create_buffer(char *file);
 void close_file(int fd);
 
+/**
+ * create_buffer - creat a buffer
+ * @file: name of the file
+ * Return: buffer pointer
+ * Ashraf Atef
+ */
 char *create_buffer(char *file)
 {
 	char *buffer = malloc(BUFFER_SIZE);
@@ -19,9 +25,14 @@ char *create_buffer(char *file)
 		exit(99);
 	}
 
-	return buffer;
+	return (buffer);
 }
 
+/**
+ * close_file - close a file and check if closed correctly
+ * @fd: file id
+ * Ashraf Atef
+ */
 void close_file(int fd)
 {
 	int result = close(fd);
@@ -33,6 +44,13 @@ void close_file(int fd)
 	}
 }
 
+/**
+ * main - copy a file content to another file
+ * @argc: number of arguments
+ * @argv: an array of arguments
+ * Return: 0 if exit correctly
+ * Ashraf Atef
+ */
 int main(int argc, char *argv[])
 {
 	int from, to, r, w;
@@ -58,9 +76,7 @@ int main(int argc, char *argv[])
 		close_file(from);
 		exit(99);
 	}
-
-	do
-	{
+	do {
 		r = read(from, buffer, BUFFER_SIZE);
 		if (r == -1)
 		{
@@ -84,5 +100,5 @@ int main(int argc, char *argv[])
 	close_file(from);
 	close_file(to);
 
-	return 0;
+	return (0);
 }
