@@ -1,76 +1,41 @@
 #include "main.h"
 
-#include <elf.h>
-
-void print_error(char *message);
-
-/**
- * print_elf_header_info - Prints information from the ELF header.
- * @header: Pointer to the ELF header structure.
- */
-void print_elf_header_info(Elf64_Ehdr *header)
+int check_line(char *line, char *target)
 {
-	int i;
+	int i = 0, j = 0;
 
-	printf("ELF Header:\n");
-	printf("  Magic:   ");
-	for (i = 0; i < EI_NIDENT; i++)
-		printf("%02x ", header->e_ident[i]);
-	printf("\n");
-	printf("  Class:                             ");
-	switch (header->e_ident[EI_CLASS])
+	while (line[i] && target[j] && line[i] != target[j])
 	{
-	case ELFCLASS32:
-		printf("ELF32\n");
-		break;
-	case ELFCLASS64:
-		printf("ELF64\n");
-		break;
-	default:
-		printf("<unknown>\n");
-		break;
+		i++;
+		if (line[i] == target[j])
+			break;
 	}
-	printf("  Data:                              %s\n",
-		   header->e_ident[EI_DATA] == ELFDATA2LSB
-			   ? "2's complement, little endian"
-			   : "2's complement, big endian");
-	printf("  Version:                           %d (current)\n",
-		   header->e_ident[EI_VERSION]);
-	printf("  OS/ABI:                            ");
-	switch (header->e_ident[EI_OSABI])
-	{
-	case ELFOSABI_SYSV:
-		printf("UNIX - System V\n");
-		break;
-	case ELFOSABI_NETBSD:
-		printf("UNIX - NetBSD\n");
-		break;
-	case ELFOSABI_SOLARIS:
-		printf("UNIX - Solaris\n");
-		break;
-	default:
-		printf("<unknown: %d>\n", header->e_ident[EI_OSABI]);
-		break;
-	}
-	printf("  ABI Version:                       %d\n",
-		   header->e_ident[EI_ABIVERSION]);
-	printf("  Type:                              ");
-	switch (header->e_type)
-	{
-	case ET_EXEC:
-		printf("EXEC (Executable file)\n");
-		break;
-	case ET_DYN:
-		printf("DYN (Shared object file)\n");
-		break;
-	default:
-		printf("<unknown>\n");
-		break;
-	}
-	printf("  Entry point address:               %#lx\n",
-		   (unsigned long)header->e_entry);
+	while (line[i] && target[j] && line[i] == target[j])
+		i++, j++;
+
+	return (target[j] == '\0');
 }
+void get_line(char *full_text, char *target)
+{
+	char cur_line[255];
+	int i = 0, j = 0;
 
+	while (full_text[i])
+	{
+		for (j = 0; full_text[i] != '\n' && full_text[i]; i++, j++)
+		{
+			cur_line[j] = full_text[i];
+		}
+		cur_line[j] = '\0';
+		if (full_text[i] == '\n')
+			i++;
+		if (check_line(cur_line, target))
+		{
+			printf("%s\n", cur_line);
+			return;
+		}
+	}
+}
 /**
  * main - Entry point of the program.
  * @argc: Number of command-line arguments.
@@ -80,50 +45,44 @@ void print_elf_header_info(Elf64_Ehdr *header)
  */
 int main(int argc, char *argv[])
 {
-	int fd = open(argv[1], O_RDONLY);
-	Elf64_Ehdr header;
-	ssize_t read_bytes = read(fd, &header, sizeof(header));
+	int fd[2];
+	int id;
 
 	if (argc != 2)
 	{
-		fprintf(stderr, "Usage: %s elf_filename\n", argv[0]);
-		return (98);
+		exit(98);
 	}
-
-	if (fd == -1)
+	if (pipe(fd) == -1)
 	{
-		print_error("Error: Can't open file");
-		return (98);
+		exit(1);
 	}
 
-	if (read_bytes == -1 ||
-		read_bytes != sizeof(header))
+	id = fork();
+	if (id == 0)
 	{
-		print_error("Error: Can't read ELF header");
-		close(fd);
-		return (98);
+		dup2(fd[1], 1);
+		dup2(fd[1], 2);
+		execlp("readelf", "readelf", "-h", argv[1], NULL);
 	}
-
-	if (header.e_ident[EI_MAG0] != ELFMAG0 ||
-		header.e_ident[EI_MAG1] != ELFMAG1 ||
-		header.e_ident[EI_MAG2] != ELFMAG2 || header.e_ident[EI_MAG3] != ELFMAG3)
+	else
 	{
-		fprintf(stderr, "Error: Not an ELF file\n");
-		close(fd);
-		return (98);
+		char str[BUFSIZ];
+
+		read(fd[0], &str, BUFSIZ);
+		if (str[0] == 'r')
+		{
+			write(2, str, strlen(str));
+			exit(98);
+		}
+		get_line(str, "ELF Header");
+		get_line(str, "Magic");
+		get_line(str, "Class");
+		get_line(str, "Data");
+		get_line(str, "Version");
+		get_line(str, "OS/ABI");
+		get_line(str, "ABI Version");
+		get_line(str, "Type");
+		get_line(str, "Entry point address");
 	}
-
-	print_elf_header_info(&header);
-
-	close(fd);
 	return (0);
-}
-
-/**
- * print_error - Prints an error message to stderr.
- * @message: The error message to print.
- */
-void print_error(char *message)
-{
-	perror(message);
 }
