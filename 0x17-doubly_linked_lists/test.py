@@ -1,16 +1,11 @@
-# Online Python compiler (interpreter) to run Python online.
-# Write Python 3 code in this online editor and run it.
-n1 = 100
-n2 = 100
-res = 0
+def is_palindrome(number):
+    str_number = str(number)
+    return str_number == str_number[::-1]
 
-while n1 <= 999:
-    while n2 <= 999:
-        sum = n1 * n2
-        sum_str = str(sum)
-        if list(sum_str) == [*reversed(list(sum_str))]:
-            res = sum_str
-            print(sum_str)
-        n2 += 1
-    n2 = 100
-    n1 += 1
+maxx = 0
+for i in range(100, 999, 1):
+    for j in range(100, 999, 1):
+        if is_palindrome(i * j) and i * j > maxx:
+            maxx = i * j
+with open('102-result', 'w') as file:
+    file.write(str(maxx))
