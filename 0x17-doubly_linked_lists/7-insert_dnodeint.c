@@ -23,7 +23,7 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 			return (NULL);
 		newNode->n = n;
 		newNode->prev = cNode->prev;
-		newNode->next = cNode->next;
+		newNode->next = cNode;
 		cNode->prev->next = newNode;
 		cNode->prev = newNode;
 		return (newNode);
@@ -32,4 +32,32 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	{
 		return (NULL);
 	}
+}
+
+/**
+ * get_dnodeint_at_index - get node at specific index
+ * @head: the head node pointer
+ * @index: the index of the node to get
+ * Return: the required node or Null if the node didn't exsist
+ * Ashraf Atef
+ */
+dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
+{
+	unsigned int i = 0;
+
+	while (i++ < index)
+		if (head)
+			head = head->next;
+		else
+			return (head);
+	return (head);
+}
+/**
+ * dlistint_len -the size of doubly linked list
+ * @h: the head node pointer
+ * Return: size of the linked list
+ */
+size_t dlistint_len(const dlistint_t *h)
+{
+	return (h ? dlistint_len(h->next) + 1 : 0);
 }
