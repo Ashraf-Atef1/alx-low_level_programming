@@ -36,6 +36,6 @@ int main(int argc, char *argv[])
 		tmp = rand();
 	pass[5] = codex[(tmp ^ 0xe5) & 0x3f];
 	pass[6] = '\0';
-	printf(pass);
+	printf("%s", pass);
 	return (0);
 }
