@@ -10,7 +10,7 @@
  */
 int main(int argc, char *argv[])
 {
-	char pass[7], *uName = argv[1], *codex;
+	char pass[7] = "", *uName = argv[1], *codex;
 	int uLen = strlen(uName), i = 0, tmp = 0;
 
 	codex = "A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
