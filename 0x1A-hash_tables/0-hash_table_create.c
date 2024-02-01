@@ -4,7 +4,6 @@ hash_table_t *hash_table_create(unsigned long int size)
 {
 
 	hash_table_t *hs = malloc(sizeof(hash_table_t));
-	long unsigned int i;
 
 	if (!hs)
 		return (NULL);
