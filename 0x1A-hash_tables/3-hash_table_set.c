@@ -11,7 +11,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	head = ht->array[idx];
 	if (!head)
 	{
-		head = malloc(sizeof(hash_node_t));
+		head = calloc(1, sizeof(hash_node_t));
 		if (!head)
 			return (0);
 		head->key = strdup(key);
@@ -21,9 +21,9 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	}
 	else
 	{
-		hash_node_t *current_node;
+		hash_node_t *current_node = head;
 
-		for (current_node = head; current_node; current_node = current_node->next)
+		for (current_node = head; current_node != NULL; current_node = current_node->next)
 			if (!strcmp(current_node->key, key))
 			{
 				free(current_node->value);
@@ -31,7 +31,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 				return (1);
 			}
 
-		current_node = malloc(sizeof(hash_node_t));
+		current_node = calloc(1, sizeof(hash_node_t));
 		if (!current_node)
 			return (0);
 		current_node->key = strdup(key);
