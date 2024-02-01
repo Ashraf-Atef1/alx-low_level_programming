@@ -58,6 +58,12 @@
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "files.associations": {
     "hash_tables.h": "c",
-    "stdlib.h": "c"
+    "stdlib.h": "c",
+    "string": "c",
+    "vector": "c",
+    "memory": "c",
+    "optional": "c",
+    "string_view": "c",
+    "system_error": "c"
   }
 }
