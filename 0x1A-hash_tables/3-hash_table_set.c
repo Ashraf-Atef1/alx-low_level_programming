@@ -27,6 +27,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		for (current_node = head; current_node; current_node = current_node->next)
 			if (!strcmp(current_node->key, key))
 			{
+				free(current_node->value);
 				current_node->value = (char *)value;
 				return (1);
 			}
