@@ -16,7 +16,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 			return (0);
 		head->key = strdup(key);
 		head->value = strdup(value);
-		head->next = NULL;
 		ht->array[idx] = head;
 		return (1);
 	}
