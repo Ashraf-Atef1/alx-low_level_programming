@@ -1,5 +1,13 @@
 #include "hash_tables.h"
 
+/**
+ * hash_table_set - set kay and value on hash table
+ * @ht: a hash table pointer
+ * @key: a kay string
+ * @value: a value string
+ * Return: 1 if succuesed or 0 otherwise
+ * Ashraf Atef
+ */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int idx;
@@ -23,7 +31,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	{
 		hash_node_t *current_node = head;
 
-		for (current_node = head; current_node != NULL; current_node = current_node->next)
+		for (current_node = head; current_node != NULL;
+			 current_node = current_node->next)
 			if (!strcmp(current_node->key, key))
 			{
 				free(current_node->value);

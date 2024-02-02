@@ -1,5 +1,11 @@
 #include "hash_tables.h"
 
+/**
+ * hash_table_print - parint all values on the hash table
+ * @ht: a hash table pointer
+ * Return: void
+ * Ashraf Atef
+ */
 void hash_table_print(const hash_table_t *ht)
 {
 	hash_node_t *current_node;

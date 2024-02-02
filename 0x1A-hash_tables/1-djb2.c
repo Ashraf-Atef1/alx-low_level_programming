@@ -1,5 +1,11 @@
 #include "hash_tables.h"
 
+/**
+ * hash_djb2 - hash a string by djb2 algo
+ * @str: a string to hash
+ * Return: the hash number
+ * Ashraf Atef
+ */
 unsigned long int hash_djb2(const unsigned char *str)
 {
 	unsigned long int hash;
