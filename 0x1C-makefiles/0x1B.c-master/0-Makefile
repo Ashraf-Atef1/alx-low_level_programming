@@ -1,0 +1,4 @@
+.PHONY: school
+all: school
+school: 
+	gcc main.c $@.c -o $@
