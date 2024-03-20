@@ -9,7 +9,7 @@ def island_perimeter(grid):
     perimeter = 0
     for i in range(len(grid)):
         for j in range(len(grid[i])):
-            if i and j and grid[i][j] == 1:
+            if grid[i][j] == 1:
                 perimeter += count_cell_perimeter(grid, i, j)
     return perimeter
 
@@ -17,12 +17,12 @@ def island_perimeter(grid):
 def count_cell_perimeter(grid, i, j):
     """Calculate the perimeter for each cell"""
     sum = 0
-    if not grid[i][j - 1]:
+    if j and not grid[i][j - 1]:
         sum += 1
-    if not grid[i][j + 1]:
+    if j and not grid[i][j + 1]:
         sum += 1
-    if not grid[i - 1][j]:
+    if i and not grid[i - 1][j]:
         sum += 1
-    if not grid[i + 1][j]:
+    if i and not grid[i + 1][j]:
         sum += 1
     return sum
