@@ -1,41 +1,17 @@
-# Compiler
-CC := gcc
-
-# Source files
-SRC := main.c school.c
-
-# Object files
-OBJ := $(SRC:.c=.o)
-
-# Executable name
-NAME := school
-
-# Program to delete files
-RM := /bin/rm -f
-
-# Compiler flags
-CFLAGS := -Wall -Werror -Wextra -pedantic
-
-.PHONY: all clean oclean fclean re
-
-all: $(NAME)
-
-$(NAME): $(OBJ)
-	$(CC) -o $@ $(OBJ)
-
+CC = gcc
+SRC = main.c school.c
+OBJ = $(SRC:.c=.o) 
+NAME = school
+RM = rm -f
+CFLAGS = -Wall -Werror -Wextra -pedantic
+all: $(OBJ)
+	${CC} ${OBJ} -o ${NAME}
 clean:
-	$(RM) $(OBJ) $(NAME) *~
-
+	$(RM) *~ ${NAME}
 oclean:
 	$(RM) $(OBJ)
-
-fclean:
-	$(RM) $(OBJ) $(NAME) *~
-
-re: fclean all
-
-$(OBJ): %.o: %.c
+fclean: clean oclean
+re: oclean all
+%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
-
-# Check for the existence of header file m.h
 $(SRC): m.h
