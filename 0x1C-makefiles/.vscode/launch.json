@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/ashrafatef/alx-sw/alx-low_level_programming/0x1C-makefiles/0x1B.c-master",
-      "program": "/home/ashrafatef/alx-sw/alx-low_level_programming/0x1C-makefiles/0x1B.c-master/build/Debug/outDebug",
+      "cwd": "/home/ashrafatef/alx-sw/alx-low_level_programming/0x1C-makefiles",
+      "program": "/home/ashrafatef/alx-sw/alx-low_level_programming/0x1C-makefiles/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
