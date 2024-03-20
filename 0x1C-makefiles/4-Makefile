@@ -12,5 +12,3 @@ oclean:
 	$(RM) $(OBJ)
 fclean: clean oclean
 re: oclean all
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
