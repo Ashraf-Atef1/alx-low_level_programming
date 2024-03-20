@@ -8,7 +8,7 @@ def island_perimeter(grid):
     """Calculate the island perimeter"""
     perimeter = 0
     col = len(grid)
-    row = len(grid[i])
+    row = len(grid[0])
     for i in range(col):
         for j in range(row):
             if grid[i][j] == 1:
