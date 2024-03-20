@@ -1,0 +1,41 @@
+# Compiler
+CC := gcc
+
+# Source files
+SRC := main.c school.c
+
+# Object files
+OBJ := $(SRC:.c=.o)
+
+# Executable name
+NAME := school
+
+# Program to delete files
+RM := /bin/rm -f
+
+# Compiler flags
+CFLAGS := -Wall -Werror -Wextra -pedantic
+
+.PHONY: all clean oclean fclean re
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(CC) -o $@ $(OBJ)
+
+clean:
+	$(RM) $(OBJ) $(NAME) *~
+
+oclean:
+	$(RM) $(OBJ)
+
+fclean:
+	$(RM) $(OBJ) $(NAME) *~
+
+re: fclean all
+
+$(OBJ): %.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Check for the existence of header file m.h
+$(SRC): m.h
